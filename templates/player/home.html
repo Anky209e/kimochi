@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kimochi PLayer</title>
+    <link rel="stylesheet" href="/media/styles/home.css">
+</head>
+
+<body>
+    <div class="header">
+        <a href="/player">
+            <h1 style="display: inline; color: aliceblue;">Kimochii!</h1>
+        </a>
+
+        <a href="/user/profile/{{ user.get_username }}" class="user-button">{{ user.get_username }}</a>
+        <a href="/accounts/logout" class="logout-button">Logout</a>
+    </div>
+
+    <div class="conts">
+        {% for song in names %}
+        <div class="player">
+            <h3>{{ song.name }}-{{song.artist}}</h3>
+            <img src="/media/{{song.cover}}" width="100%" height="100%" class="cover-image" alt="Cover Image">
+            <br>
+            <audio controls class="music-player">
+                <source src="/media/{{song.file}}" type="audio/mp3">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/media/styles/home.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Kimochii!</h1>
+    </div>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="main-form">
+            {{ form.as_p }}
+            <input type="submit" value="Login">
+            <p>Dont Have an account? <a href="/user/register" style="text-decoration: none; color: azure;">Register Now</a></p>
+        </div>
+
+    </form>
+</body>
+</html>

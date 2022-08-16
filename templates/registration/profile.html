@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Profile-{{ user.username.title }}</title>
+    <link rel="stylesheet" href="/media/styles/home.css">
+</head>
+<body> 
+    <div class="header">
+        <a href="/player"><h1 style="display: inline;">Kimochii!</h1></a>
+        
+        <!-- {% if user.is_authenticated %}
+            <a href="/user/{{ user.get_username }}" class="user-button">{{ user.get_username }}</a>
+            <a href="/accounts/logout" class="logout-button">Logout</a>
+        {% endif %} -->
+    </div>
+
+    <div class="user-info">
+        <div class="text-cont">
+            <h1>User Info</h1>
+            <h1> Name: {{ user.username.title }} </h1>
+            <h1> Email: <a href="{{ user.email }}">{{ user.email }}</a> </h1>
+        </div>
+        
+        <img src="/media/{{ profile.profile_image }}" class="profile-image" width="100%" alt="">
+    </div>
+
+        
+
+    {% if owner %}
+        <div class="data-change-form">
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="hidden" name="user" value="{{user}}">
+                {{ profile_form }}
+                <input type="submit" value="Update">
+            </form>
+        </div>
+    {% else %}
+        <div class="bio">
+            <h1>BIO</h1>
+            <p>{{ profile.bio }}</p>
+        </div>
+        
+    {% endif %}
+
+</body>
+</html>
